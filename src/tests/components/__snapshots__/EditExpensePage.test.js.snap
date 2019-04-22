@@ -22,6 +22,8 @@ exports[`should render EditExpensePage correctly 1`] = `
       expense={
         Object {
           "amount": 450,
+          "categoryClass": "education",
+          "categoryLabel": "Education",
           "createdAt": 345600000,
           "description": "Rent Bill",
           "id": "3",

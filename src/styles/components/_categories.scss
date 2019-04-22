@@ -1,0 +1,22 @@
+
+.list-item__category {
+    &.car {
+        background: lighten(orange, 10%);
+    }
+
+    &.education {
+        background: lighten(#fa2afa, 10%);
+    }
+
+    &.groceries {
+        background: lighten(rgb(55, 255, 55), 10%);
+    }
+
+    &.rent {
+        background: lighten(rgb(2, 19, 255), 10%);
+    }
+
+    &.other {
+        background: lighten(rgb(46, 46, 46), 10%);
+    }
+}

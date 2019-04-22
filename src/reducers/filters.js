@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 const filtersReducerDefautState = {
+    categoryLabel: '',
     text: '',
     sortBy: 'date',
     startDate: moment().startOf('month'),
@@ -9,6 +10,11 @@ const filtersReducerDefautState = {
 
 export default (state = filtersReducerDefautState, action) => {
     switch (action.type) {
+        case 'SET_CATEGORY_FILTER':
+            return {
+                ...state,
+                categoryLabel: action.categoryLabel
+            };
         case 'SET_TEXT_FILTER':
             return {
                 ...state,

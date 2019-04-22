@@ -1,15 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-
-const now = moment();
-//console.log(now.format('MMM Do, YYYY'));
+import Select from 'react-select';
+import categories from '../categories/categories';
 
 class ExpenseForm extends React.Component {
     constructor(props){
         super(props);
-
+        
         this.state = {
+            category: props.expense && props.expense.categoryClass !== '' && props.expense.categoryLabel !== '' ? {value: props.expense.categoryClass, label: props.expense.categoryLabel} : null,
             description: props.expense ? props.expense.description : '',
             note: props.expense ? props.expense.note : '',
             amount: props.expense ? (props.expense.amount / 100).toString() : '',
@@ -17,6 +17,10 @@ class ExpenseForm extends React.Component {
             calendarFocused: false,
             error: ''
         };
+    }
+
+    onCategoryChange = (category) => {
+        this.setState(() => ({ category }));
     }
 
     onDescriptionChange = (e) => {
@@ -52,6 +56,7 @@ class ExpenseForm extends React.Component {
 
     submit = (e) => {
         e.preventDefault();
+        const category = this.state.category === null ? {value: '', label: ''} : this.state.category;
 
         if (!this.state.description || !this.state.amount) {
             // Set error state  - Please provide description and amount
@@ -63,6 +68,8 @@ class ExpenseForm extends React.Component {
                 error: ''
             }))
             this.props.onSubmit({
+                categoryClass: category.value,
+                categoryLabel: category.label,
                 description: this.state.description,
                 amount: parseFloat(this.state.amount, 10) * 100,
                 createdAt: this.state.createdAt.valueOf(),
@@ -75,6 +82,13 @@ class ExpenseForm extends React.Component {
         return (
             <form className="form" onSubmit={this.submit}>
                 { this.state.error && <p className="form__error">{this.state.error}</p>}
+                <Select
+                    value={this.state.category}
+                    onChange={this.onCategoryChange}
+                    isClearable={true}
+                    options={categories}
+                    placeholder="Select Category"
+                />
                 <input 
                     type="text" 
                     className="text-input" 

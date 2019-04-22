@@ -5,6 +5,7 @@ test('should setup default filters value', () => {
     const state = filtersReducers(undefined, { type: '@@INIT'});
 
     expect(state).toEqual({
+        categoryLabel: '',
         text: '',
         sortBy: 'date',
         startDate: moment().startOf('month'),

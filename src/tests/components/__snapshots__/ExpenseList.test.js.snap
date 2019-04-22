@@ -28,6 +28,8 @@ exports[`should render ExpenseList with expenses 1`] = `
   >
     <ExpenseListItem
       amount={120}
+      categoryClass="rent"
+      categoryLabel="Rent"
       createdAt={0}
       description="Water Bill"
       id="1"
@@ -36,6 +38,8 @@ exports[`should render ExpenseList with expenses 1`] = `
     />
     <ExpenseListItem
       amount={150}
+      categoryClass="rent"
+      categoryLabel="Rent"
       createdAt={-345600000}
       description="Gas Bill"
       id="2"
@@ -44,6 +48,8 @@ exports[`should render ExpenseList with expenses 1`] = `
     />
     <ExpenseListItem
       amount={450}
+      categoryClass="education"
+      categoryLabel="Education"
       createdAt={345600000}
       description="Rent Bill"
       id="3"

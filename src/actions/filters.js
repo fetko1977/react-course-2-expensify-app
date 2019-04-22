@@ -1,3 +1,8 @@
+export const setCategoryFilter = (categoryLabel = '') => ({
+    type: 'SET_CATEGORY_FILTER',
+    categoryLabel
+})
+
 export const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
     text

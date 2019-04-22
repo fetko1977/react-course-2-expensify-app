@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import { setCategoryFilter, setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import Select from 'react-select';
+import categories from '../categories/categories';
 
 export class ExpenseListFilters extends React.Component {
   state = {
-    calendarFocused: null
+    calendarFocused: null,
+    category: null
   };
 
   onDatesChange = ({ startDate, endDate }) => {
@@ -15,6 +18,12 @@ export class ExpenseListFilters extends React.Component {
 
   onFocusChange = (calendarFocused) => {
       this.setState(() => ({ calendarFocused }));
+  }
+
+  onCategoryChange = (category) => {
+      const categoryLabel = category === null ? '' : category.label;
+      this.setState(() => ({ category }));
+      this.props.setCategoryFilter(categoryLabel);
   }
 
   onTextChange = (e) => {
@@ -41,6 +50,15 @@ export class ExpenseListFilters extends React.Component {
                   <option value="amount">Amount</option>
                 </select>
             </div>
+            <div className="input-group__item input-group__item--category-filter">
+                <Select
+                    value={this.state.category}
+                    isClearable={true}
+                    onChange={this.onCategoryChange}
+                    options={categories}
+                    placeholder="Filter By Category"
+                />
+            </div>
             <div className="input-group__item">
                 <DateRangePicker
                   startDate={this.props.filters.startDate}
@@ -63,6 +81,7 @@ const mapStateToProps = (state) => ({ filters: state.filters });
 
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
+    setCategoryFilter: (categoryLabel) => dispatch(setCategoryFilter(categoryLabel)),
     sortByDate: () => dispatch(sortByDate()),
     sortByAmount: () => dispatch(sortByAmount()),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),

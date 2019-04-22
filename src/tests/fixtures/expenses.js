@@ -2,6 +2,8 @@ import moment from 'moment';
 
 export default [{
         id: '1',
+        categoryClass: 'rent',
+        categoryLabel: 'Rent',
         description: 'Water Bill',
         note: '',
         amount: 120,
@@ -9,6 +11,8 @@ export default [{
     },
     {
         id: '2',
+        categoryClass: 'rent',
+        categoryLabel: 'Rent',
         description: 'Gas Bill',
         note: '',
         amount: 150,
@@ -16,6 +20,8 @@ export default [{
     },
     {
         id: '3',
+        categoryClass: 'education',
+        categoryLabel: 'Education',
         description: 'Rent Bill',
         note: '',
         amount: 450,

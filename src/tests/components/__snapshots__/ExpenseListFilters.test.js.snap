@@ -39,6 +39,43 @@ exports[`should render ExpenseListFilters with Altfilters corectly 1`] = `
       </select>
     </div>
     <div
+      className="input-group__item input-group__item--category-filter"
+    >
+      <StateManager
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        isClearable={true}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "Car",
+              "value": "car",
+            },
+            Object {
+              "label": "Education",
+              "value": "education",
+            },
+            Object {
+              "label": "Groceries",
+              "value": "groceries",
+            },
+            Object {
+              "label": "Other",
+              "value": "other",
+            },
+            Object {
+              "label": "Rent",
+              "value": "rent",
+            },
+          ]
+        }
+        placeholder="Filter By Category"
+        value={null}
+      />
+    </div>
+    <div
       className="input-group__item"
     >
       <DateRangePicker
@@ -166,6 +203,43 @@ exports[`should render ExpenseListFilters with filters corectly 1`] = `
           Amount
         </option>
       </select>
+    </div>
+    <div
+      className="input-group__item input-group__item--category-filter"
+    >
+      <StateManager
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        isClearable={true}
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "Car",
+              "value": "car",
+            },
+            Object {
+              "label": "Education",
+              "value": "education",
+            },
+            Object {
+              "label": "Groceries",
+              "value": "groceries",
+            },
+            Object {
+              "label": "Other",
+              "value": "other",
+            },
+            Object {
+              "label": "Rent",
+              "value": "rent",
+            },
+          ]
+        }
+        placeholder="Filter By Category"
+        value={null}
+      />
     </div>
     <div
       className="input-group__item"

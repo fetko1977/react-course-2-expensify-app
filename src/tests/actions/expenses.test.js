@@ -19,8 +19,8 @@ const defaultAuthState = { auth: { uid }};
 
 beforeEach((done) => {
     const expensesData = {};
-    expenses.forEach(({ id, description, note, amount, createdAt }) => {
-        expensesData[id] = { description, note, amount, createdAt };
+    expenses.forEach(({ id, categoryClass, categoryLabel, description, note, amount, createdAt }) => {
+        expensesData[id] = { description, categoryClass, categoryLabel, note, amount, createdAt };
     });
 
     database.ref(`users/${uid}/expenses`).set(expensesData).then(() => done());
@@ -108,6 +108,8 @@ test('should add expense to database and store', (done) => {
     const store = createMockStore(defaultAuthState);
     
     const expenseData = {
+        categoryClass: 'education',
+        categoryLabel: 'Education',
         description: 'Mouse',
         amount: 3000,
         note: 'This one is better',
@@ -136,6 +138,8 @@ test('should add expense with defaults to database and store', (done) => {
     const store = createMockStore(defaultAuthState);
 
     const expenseDefaults = {
+        categoryClass: '',
+        categoryLabel: '',
         description: '',
         amount: 0,
         note: '',
